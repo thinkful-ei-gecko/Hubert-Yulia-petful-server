@@ -1,7 +1,7 @@
 const PetsService = {
   peek(queue) {
     if (queue.first === null) {
-      return 'Queue is empty';
+      return 'Line is empty';
     }
     return queue.first.value;
   }
