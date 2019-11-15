@@ -8,7 +8,7 @@ personRouter
   .route('/')
   .get((req, res, next) => {
     const nextInLine = Service.peek(personStore);
-    res.json(nextInLine);
+    return res.json(nextInLine);
   })
   .post(jsonBodyParser, (req, res, next) => {
     let { full_name } = req.body;
@@ -19,7 +19,19 @@ personRouter
         });
     }
     personStore.enqueue(full_name);
-    res.status(201).json(`${full_name} added to waiting list`);
+    res.status(201).json(`${full_name} added to waiting list`)
+  })
+  .delete((req, res, next) => {
+    personStore.dequeue();
+    res.status(204).end();
   });
+
+personRouter
+  .route('/list')
+  .get((req, res, next) => {
+    let personList = Service.getAll(personStore);
+    return res.json(personList); 
+  });
+
 
 module.exports = personRouter;

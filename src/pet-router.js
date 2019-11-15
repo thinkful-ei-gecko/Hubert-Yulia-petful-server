@@ -8,6 +8,10 @@ petRouter
   .get((req, res, next) => {
     const nextAvailable = Service.peek(petStore);
     res.json(nextAvailable);
+  })
+  .delete((req, res, next) => {
+    petStore.dequeue();
+    res.status(204).end();
   });
 
 module.exports = petRouter;
