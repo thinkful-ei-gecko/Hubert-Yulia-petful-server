@@ -14,4 +14,11 @@ petRouter
     res.status(204).end();
   });
 
+petRouter
+  .route('/list')
+  .get((req, res, next) => {
+    let petList = Service.getAllPeople(petStore);
+    return res.json(petList); 
+  });
+
 module.exports = petRouter;

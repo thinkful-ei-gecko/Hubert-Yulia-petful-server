@@ -2,6 +2,7 @@ class _Node {
   constructor(value) {
     this.value = value;
     this.next = null;
+    this.prev = null;
   }
 }
 
@@ -12,16 +13,16 @@ class Queue {
   }
   enqueue(data) {
     const node = new _Node(data);
-
+  
+    if (this.last) {
+      node.next = this.last;
+      this.last.prev = node;
+    }
+    this.last = node;
     if (this.first === null) {
       this.first = node;
     }
-
-    if (this.last) {
-      this.last.next = node;
-    }
     //make the new node the last item on the queue
-    this.last = node;
   }
 
   dequeue() {
@@ -30,7 +31,7 @@ class Queue {
       return;
     }
     const node = this.first;
-    this.first = this.first.next;
+    this.first = node.prev;
     //if this is the last item in the queue
     if (node === this.last) {
       this.last = null;

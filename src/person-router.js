@@ -19,7 +19,8 @@ personRouter
         });
     }
     personStore.enqueue(full_name);
-    res.status(201).json(`${full_name} added to waiting list`)
+    console.log(personStore);
+    res.status(201).send(`${full_name} added to waiting list`);
   })
   .delete((req, res, next) => {
     personStore.dequeue();
@@ -29,7 +30,7 @@ personRouter
 personRouter
   .route('/list')
   .get((req, res, next) => {
-    let personList = Service.getAll(personStore);
+    let personList = Service.getAllPeople(personStore);
     return res.json(personList); 
   });
 

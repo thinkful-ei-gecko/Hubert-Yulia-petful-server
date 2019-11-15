@@ -5,20 +5,20 @@ const Service = {
     }
     return queue.first.value;
   },
-  getAll(queue) {
+  getAllPeople(queue) {
     if (queue.first === null) {
-      return 'You are first in line and can adopt a pet now';
+      return 'Noone in the line';
     }
     let currNode = queue.first;
-    console.log(currNode);
-    let personList=[];
-    while(currNode.value !== null) {
-      console.log(currNode);
-      personList.push(currNode.value);
-      currNode = currNode.next;
+    let pList=[];
+
+    while(currNode.prev !== null) {
+      pList.push(currNode.value);
+      currNode = currNode.prev;
     }
-    return personList;
-  }
+    pList.push(currNode.value);
+    return pList;
+  },
 };
 
 module.exports = Service;
