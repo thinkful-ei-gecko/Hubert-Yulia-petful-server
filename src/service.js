@@ -7,7 +7,7 @@ const Service = {
   },
   getAllPeople(queue) {
     if (queue.first === null) {
-      return 'Noone in the line';
+      return [];
     }
     let currNode = queue.first;
     let pList=[];

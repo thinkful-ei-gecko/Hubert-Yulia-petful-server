@@ -22,8 +22,8 @@ personRouter
     res.status(201).send(`${full_name} added to waiting list`);
   })
   .delete((req, res, next) => {
-    personStore.dequeue();
-    res.status(204).end();
+    let removed = personStore.dequeue();
+    res.status(204).json(removed);
   });
 
 personRouter
