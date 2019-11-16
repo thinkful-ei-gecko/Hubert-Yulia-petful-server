@@ -25,7 +25,7 @@ const pets = [
     sex: 'Female',
     age: 4,
     breed: 'Corgi',
-    story: 'Found on the stree'
+    story: 'Found on the street'
   },
   {
     imageURL:'https://www.coolcattreehouse.com/wp-content/uploads/2016/06/Siamese-Cat-Breed.jpg', 
@@ -57,8 +57,12 @@ const pets = [
 
 const petStore = new Queue();
 
-for (let i=0; i<pets.length; i++) {
-  petStore.enqueue(pets[i]);
+function populate() {
+  for (let i=0; i<pets.length; i++) {
+    petStore.enqueue(pets[i]);
+  }
 }
+
+populate();
 
 module.exports = petStore;

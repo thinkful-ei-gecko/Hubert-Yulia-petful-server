@@ -10,8 +10,8 @@ petRouter
     res.json(nextAvailable);
   })
   .delete((req, res, next) => {
-    petStore.dequeue();
-    res.status(204).end();
+    let removed = petStore.dequeue();
+    res.status(204).json(removed);
   });
 
 petRouter

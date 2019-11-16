@@ -1,7 +1,7 @@
 const Service = {
   peek(queue) {
     if (queue.first === null) {
-      return 'Line is empty';
+      return [];
     }
     return queue.first.value;
   },

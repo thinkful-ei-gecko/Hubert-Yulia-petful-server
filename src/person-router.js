@@ -19,7 +19,6 @@ personRouter
         });
     }
     personStore.enqueue(full_name);
-    console.log(personStore);
     res.status(201).send(`${full_name} added to waiting list`);
   })
   .delete((req, res, next) => {
