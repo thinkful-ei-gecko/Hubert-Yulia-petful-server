@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const { PORT } = require('./config');
 
 const petRouter = require('./pet-router');
 const personRouter = require('./person-router');
@@ -27,6 +28,6 @@ app.use(function (err, req, res, next) {
   });
 });
 
-app.listen(8080,()=>{
+app.listen(PORT,()=>{
   console.log('Serving on 8080');
 });
